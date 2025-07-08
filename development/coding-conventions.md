@@ -937,6 +937,69 @@ Future<void> processData(String data, int _unusedId) async {
 }
 ```
 
+## 12.1. Class Member Ordering
+
+To ensure code consistency and maintainability, all classes should follow a standardized member ordering. Adhering to a clear structure improves readability and makes it easier for team members to navigate and maintain the codebase.
+
+### Recommended order for class members:
+
+1. **Static properties**
+2. **Static methods**
+3. **Public properties**
+4. **Constructor**
+5. **Public methods**
+6. **Getters/Setters** (if any)
+7. **Protected properties/methods** (if supported by the language)
+8. **Private properties**
+9. **Private methods**
+10. **Override methods** (place at the end or immediately after public methods, depending on team preference)
+
+### Example (Dart):
+```dart
+class Example {
+  // 1. Static properties
+  static int staticCount = 0;
+
+  // 2. Static methods
+  static void staticMethod() {}
+
+  // 3. Public properties
+  int id;
+
+  // 4. Constructor
+  Example(this.id);
+
+  // 5. Public methods
+  void doSomething() {}
+
+  // 6. Getters/Setters
+  int get value => id;
+  set value(int v) => id = v;
+
+  // 7. Protected (Dart does not support, but Java/C# do)
+  // protected void doProtected() {}
+
+  // 8. Private properties
+  int _privateValue = 0;
+
+  // 9. Private methods
+  void _doPrivate() {}
+
+  // 10. Override methods
+  @override
+  String toString() => 'Example: $id';
+}
+```
+
+### Notes:
+- Place static members at the top to distinguish them from instance members.
+- The constructor should be positioned immediately after the properties for clarity.
+- Override methods can be grouped at the end of the class or immediately after public methods, based on team agreement.
+- For lengthy classes, use comments to group related code sections for easier navigation.
+- Configure linter rules to enforce this ordering where possible.
+
+All team members are expected to follow this convention. Any deviations should be discussed and agreed upon by the team.
+
 ## 13. File Organization & Widget Structure
 
 ### **Widget File Organization Rules**:
